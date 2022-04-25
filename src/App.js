@@ -1,14 +1,13 @@
-
 import './App.css';
+import Navbar from './components/Navbar';
+import ItemListContainer from './components/ItemListContainer';
 import Footer from './components/Footer';
-import NavbarDaisy from './components/NavbarDaisy';
-import Productos from './components/Productos';
 
 function App() {
   return (
     <div className="App">
-     <NavbarDaisy />
-     <Productos />
+     <Navbar />
+     <ItemListContainer />
      <Footer />
     </div>
   );
