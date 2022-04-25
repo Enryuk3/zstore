@@ -1,4 +1,4 @@
-function NavbarDaisy() {
+function Navbar() {
   return (
     <div className="navbar bg-base-100 top-0 sticky z-10">
       <div className="flex-1">
@@ -43,4 +43,4 @@ function NavbarDaisy() {
     </div>
   )
 }
-export default NavbarDaisy
+export default Navbar
