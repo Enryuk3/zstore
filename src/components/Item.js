@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom"
 import ItemCount from "./ItemCount"
 
 function Item({item}) {
-  const {title, price}  = item
+  const {id, title, price, description, category }  = item
   return (
     <div className="shadow-xl card w-96 bg-base-100">
       <figure><img src="https://api.lorem.space/image/shoes?w=400&h=225" alt={title} /></figure>
@@ -15,6 +16,9 @@ function Item({item}) {
         </div>
         <div className="justify-end card-actions">
           <button className="btn btn-primary">Agregar al Carrito</button>
+        </div>
+        <div className="justify-end card-actions">
+          <Link to={`/shoes/${id}`} className="btn btn-secondary">ver detalle</Link>
         </div>
       </div>
     </div>
