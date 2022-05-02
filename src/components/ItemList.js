@@ -35,7 +35,13 @@ function ItemList() {
 
   return (
     <div className="flex flex-wrap justify-center w-full gap-10 mx-auto">
-      {filteredList.map((s) => (<Item key={s.id} item={s} />))}
+      
+    {
+      
+      filteredList.length > 0
+      ?filteredList.map((s) => (<Item key={s.id} item={s} />))
+      :<div className="mt-3 text-center">Productos disponibles en un instante, espere por favor...</div>                    
+    }
     </div>
   );
 }

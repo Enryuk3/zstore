@@ -1,15 +1,21 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { shoesData } from "../data/shoesData";
+import ItemCount from "./ItemCount";
 
 const ItemDetail = () => {
   const { shoesId } = useParams();
   const [shoes, setShoes] = useState({});
 
+  const onAdd = (count) => {
+    alert (`Se agregaron ${count} productos al carrito`)
+  };
+  
   useEffect(() => {
     setShoes(shoesData.find((s) => s.id == shoesId));
   }, [shoesId]);
 
+  
   return (
     <div className="shadow-xl card card-side bg-base-100">
       <figure>
@@ -19,9 +25,7 @@ const ItemDetail = () => {
         <h2 className="card-title">{shoes.title}</h2>
         <h4>{shoes.price}</h4>
         <p>{shoes.description}</p>
-        <div className="justify-end card-actions">
-          <button className="btn btn-primary">Agregar al carrito</button>
-        </div>
+        <ItemCount stock={shoes.stock} initial={1} onAdd={onAdd}/>
       </div>
     </div>
   );
