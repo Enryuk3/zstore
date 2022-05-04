@@ -29,10 +29,8 @@ function ItemList() {
   };
 
   return (
-    <div className="flex flex-wrap justify-center w-full gap-10 mx-auto">
-      
+    <div className="flex flex-wrap justify-center w-full gap-10 mx-auto">   
     {
-      
       shoes.length > 0
       ?shoes.map((s) => (<Item key={s.id} item={s} />))
       :<div className="grid w-full place-content-center h-96">Productos disponibles en un instante, espere por favor...</div>                    
