@@ -1,29 +1,27 @@
 import { useEffect, useState } from "react"
-import { shoesData } from "../data/shoesData"
+import { useParams } from "react-router-dom"
+import { getItem } from "../data/shoesData"
 import ItemDetail from "./ItemDetail"
 
 const ItemDetailContainer = () => {
-  const [shoes, setShoes] = useState([])
+  const [product, setProduct] = useState([])
+  const { shoesId } =  useParams()
 
   useEffect(() => {
-    getShoes()
-  }, [])
-
-  const getShoes = () => {
-    const promesa =  new Promise ((resolve, reject) => {
-      setTimeout( () => {
-         resolve(shoesData)
-      }, 2000)
-    })
-
-    promesa.then (data => {
-        setShoes(data)
-    })
-  }
+		if (shoesId === undefined) {
+			getItem().then((resp) => setProduct(resp))
+		} else {
+			getItem().then((resp) => {
+        let item = resp.find(e => e.id === Number(shoesId))
+        setProduct(item)
+      })
+      
+		}
+	}, [shoesId]) 
 
   return (
-    <div className="flex flex-wrap justify-center w-full gap-10 mx-auto">
-      <ItemDetail />
+    <div className="container h-screen max-w-4xl mx-auto my-8">
+      <ItemDetail producto={product}/>
     </div>
   )
 }
