@@ -1,7 +1,14 @@
 import { useState } from "react";
+import { useAppContext } from "./context/AppContext";
+import { useCartContext } from "./context/CartContext";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
 
-const ItemCount = ({ stock, initial, onAdd }) => {
+const ItemCount = ({ stock, initial, onAdd, id }) => {
   const [count, setCount] = useState(initial);
+
+  const { addToCart } = useCartContext()
+  const { products } = useAppContext()
 
   const resHandler = () => {
     if (count > initial) {
@@ -13,18 +20,38 @@ const ItemCount = ({ stock, initial, onAdd }) => {
       setCount(count + 1);
     }
   };
+  const handleClick = (id, cantidad) => {
+    const findProduct = products.find((producto) => producto.id === id)
+
+    if(!findProduct){
+      alert("Error en la base de datos")
+      return
+    }
+
+    addToCart(findProduct, cantidad)
+    onAdd(count)
+  }
 
   return (
-    <div>
-      <div className="flex p-4 mt-2 bg-gray-200 justify-evenly rounded-xl">
-        <button onClick={resHandler}>-</button>
-        <span>{count}</span>
-        <button onClick={addHandler}>+</button>
-      </div>
-      <div className="justify-end card-actions">
-        <button className="btn btn-primary" onClick={()=>onAdd(count)}>Agregar al Carrito</button>
-      </div>
-    </div>
+    <div className="flex gap-4">
+				<div className="flex flex-row">
+					<button className="btn " onClick={resHandler}>
+            <FontAwesomeIcon icon={faMinus} />
+					</button>
+					<label className="flex items-center justify-center px-10 text-xl text-black ">{count}</label>
+					<button className="btn " onClick={addHandler}>
+          <FontAwesomeIcon icon={faPlus} />
+					</button>
+				</div>
+				<div>
+					<button
+						className="text-white btn bg-primary btn-block "
+						onClick={() => handleClick(id, count)}
+					>
+						Agregar al Carrito
+					</button>
+				</div>
+			</div>
   );
 };
 
