@@ -25,7 +25,7 @@ const CartWidget = () => {
       </label>
       <div tabIndex="0" className="mt-3 shadow card card-compact dropdown-content w-52 bg-base-100">
         <div className="card-body">
-          <span className="text-lg font-bold">{ cart.reduce((acc, item) => acc + item.quantity, 0)} Items</span>
+          <span className="text-lg font-bold text-black">{ cart.reduce((acc, item) => acc + item.quantity, 0)} Items</span>
           <span className="text-info">Subtotal: ${ cart.reduce((acc, item) => acc + (item.price*item.quantity), 0)}</span>
           <div className="card-actions">
             <button className="btn btn-primary btn-block">View cart</button>
