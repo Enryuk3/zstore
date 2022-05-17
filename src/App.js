@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ItemListContainer from "./components/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer";
+import Cart from "./components/Cart";
 
 import CartContextProvider from "./components/context/CartContext";
 import AppContextProvider from "./components/context/AppContext";
@@ -20,6 +21,7 @@ function App() {
             <Route path="/shop/:categoryId" element={<ItemListContainer />} />
             <Route path="/shoes/:shoesId" element={<ItemDetailContainer />} />
             <Route path="/all" element={<ItemListContainer />} />
+            <Route path="/cart" element={<Cart/>} />
           </Routes>
           <Footer />
         </BrowserRouter>
