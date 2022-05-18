@@ -11,7 +11,7 @@ export const shoesData = [
   },
   {
     id: 2,
-    title: "Zapatillas Mujer Elite Mundial Luxe - 40325U-HZY: USA5-EUR36-CM23",
+    title: "Zapatillas Mujer Elite Mundial Luxe",
     brand: "Umbro",
     price: 250,
     picUrl: "https://coliseum.vteximg.com.br/arquivos/ids/230311-1000-1000/40325U-HZY-1.jpg?v=637049358753200000",
