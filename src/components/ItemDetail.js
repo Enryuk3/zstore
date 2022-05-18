@@ -14,18 +14,18 @@ const ItemDetail = ({ producto }) => {
   return (
     
 			<div className="hero bg-base-200">
-      <div className="flex-col hero-content lg:flex-row">
+      <div className="flex-col lg:hero-content md:flex-row ">
         <img
           src={picUrl}
-          className="max-w-sm rounded-lg shadow-2xl"
+          className="max-w-sm md:max-w-md w-full rounded-lg mx-auto shadow-xl"
           alt={`${category}, ${title} de ${brand}`}
         />
-        <div>
-          <h1 className="text-3xl font-bold">{brand}</h1>
-          <h2 className="text-5xl font-bold">{title}</h2>
-          <p className="py-6">{description}</p>
-          <div className="inline-block mr-5 align-bottom">
-            <span className="text-5xl font-bold leading-none align-baseline">
+        <div className="h-full flex flex-col items-center justify-center gap-3">
+          <h1 className="text-xl lg:text-3xl font-bold">{brand}</h1>
+          <h2 className="text-3xl lg:text-5xl font-bold">{title}</h2>
+          <p className="py-6 max-w-sm">{description}</p>
+          <div className="inline-block align-bottom mx-auto justify-center">
+            <span className="text-3xl lg:text-5xl font-bold leading-none align-baseline">
               ${price}
             </span>
             <div className="mt-4">

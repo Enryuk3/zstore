@@ -20,7 +20,7 @@ const ItemDetailContainer = () => {
 	}, [shoesId]) 
 
   return (
-    <div className="container h-screen max-w-4xl mx-auto my-8">
+    <div className="container h-auto max-w-4xl mx-auto my-8">
       <ItemDetail producto={product}/>
     </div>
   )
