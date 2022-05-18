@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
-import CartWidget from "./Cardwidget"
+import CartWidget from "./CartWidget"
 
 function Navbar() {
   let [open, setOpen] = useState(false)

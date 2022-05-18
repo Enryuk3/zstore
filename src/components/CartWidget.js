@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useCartContext } from "./context/CartContext";
 
 const CartWidget = () => {
@@ -28,7 +29,7 @@ const CartWidget = () => {
           <span className="text-lg font-bold text-black">{ cart.reduce((acc, item) => acc + item.quantity, 0)} Items</span>
           <span className="text-info">Subtotal: ${ cart.reduce((acc, item) => acc + (item.price*item.quantity), 0)}</span>
           <div className="card-actions">
-            <button className="btn btn-primary btn-block">View cart</button>
+            <Link to="/cart" className="btn btn-primary btn-block">Ver Carrito</Link>
           </div>
         </div>
       </div>
