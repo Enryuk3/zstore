@@ -8,8 +8,6 @@ const Cart = () => {
   const { deleteFromCart } = useCartContext()
   const { deleteCart} = useCartContext()
 
-
-  console.log(cart);
   return (
     <div >
     <h1 className="text-center py-7 text-xl lg:text-3xl font-bold text-black">TU CARRITO</h1>
