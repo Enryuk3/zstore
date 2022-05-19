@@ -16,7 +16,7 @@ const Cart = () => {
     
       
       {cart.map((item) => (
-        <div key={item.id} className="flex flex-row p-4 items-center justify-center gap-4 md:max-w-5xlxl mx-auto ">
+        <div key={item.id} className="flex flex-row p-4 items-center w-[300px] lg:w-96 justify-center gap-4 md:max-w-5xlxl mx-auto ">
           <img src={item.picUrl}  className="w-10 md:w-32 lg:w-96 " alt={item.title} />
           <div className="flex flex-col gap-2">
             <p className="badge badge-primary badge-lg">{item.brand}</p>

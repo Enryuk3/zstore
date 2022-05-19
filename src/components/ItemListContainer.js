@@ -1,6 +1,6 @@
+import { collection, getDocs, getFirestore, query, where } from "firebase/firestore"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { getItem } from "../data/shoesData"
 import ItemList from "./ItemList"
 
 function ItemListContainer() {
@@ -8,16 +8,27 @@ function ItemListContainer() {
   const { categoryId } = useParams()
 
   useEffect(() => {
-    if (!categoryId) {
-      getItem().then((resp) => setCategory(resp))
-    } else {
-      getItem().then((resp) =>
-        setCategory(resp.filter((product) => product.category === categoryId))
-      )
-    }
+    const db = getFirestore()
+    
+    const q = query(
+      collection(db,"items"),
+      where("category", "==", categoryId)
+    )
+    const itemsCollection  = collection(db,"items")
 
-  },[categoryId])
+    if (!categoryId) {
+      getDocs(itemsCollection).then((res) => {
+          setCategory(res.docs.map((doc)=> ({id: doc.id,...doc.data()})))
+        });
+    } else {
+      getDocs(q).then((res) => {
+        setCategory(res.docs.map((doc)=> ({id: doc.id,...doc.data()})))
+      });
+    }
+    },[categoryId]);
+
   
+  console.log(category)
   return (
     <div className="w-full">
       <ItemList category={category}/>
