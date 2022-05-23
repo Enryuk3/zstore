@@ -6,16 +6,15 @@ import App from './App';
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDEAtT8xsu0HQ7zL3A2XzoH7CuGhNZKkx8",
-  authDomain: "zstore-ecommerce.firebaseapp.com",
-  projectId: "zstore-ecommerce",
-  storageBucket: "zstore-ecommerce.appspot.com",
-  messagingSenderId: "532974603384",
-  appId: "1:532974603384:web:2f8f6f6e0dff6a2cf7f18d"
+  apiKey: "AIzaSyCT6JEHk7eOE-YgKF9stn5Qhirxj9BCDws",
+  authDomain: "cellular-axon-317623.firebaseapp.com",
+  projectId: "cellular-axon-317623",
+  storageBucket: "cellular-axon-317623.appspot.com",
+  messagingSenderId: "1019825400052",
+  appId: "1:1019825400052:web:ebbc2e325a207e617856a1"
 };
 
-
-const app = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 createRoot(
   document.getElementById('root')

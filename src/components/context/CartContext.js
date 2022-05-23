@@ -6,7 +6,9 @@ export const useCartContext = () => useContext(CartContext)
 
 const CartContextProvider = ({ children }) => {
   //logica
-  const [cart, setCart] =  useState([])
+  const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart')||'[]')
+
+  const [cart, setCart] =  useState(cartFromLocalStorage)
 
   //validar si está el item en el carrito
   const isInCart = (id) => cart.find((producto) =>producto.id === id)
@@ -38,15 +40,22 @@ const CartContextProvider = ({ children }) => {
     }
 
     const deleteProduct = newCart.filter((prod) => prod.id !== producto.id)
-
+ 
     setCart(deleteProduct)
   }
   
   const deleteCart = () => setCart([])
   // console.log(cart)
 
+  // Total del carrito
+	const cartTotal = () => {
+		let totalCart = 0
+		cart.forEach (item => totalCart += (item.price*item.quantity))
+		return totalCart
+	}
+
   return (
-    <CartContext.Provider value={{cart,addToCart,deleteFromCart,deleteCart, setCart}}>
+    <CartContext.Provider value={{cart,addToCart,deleteFromCart,deleteCart, setCart, cartTotal}}>
       {children}
     </CartContext.Provider >
   )

@@ -9,6 +9,7 @@ import Cart from "./components/Cart";
 
 import CartContextProvider from "./components/context/CartContext";
 import AppContextProvider from "./components/context/AppContext";
+import CartOrder from "./components/CartOrder";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/shoes/:shoesId" element={<ItemDetailContainer />} />
             <Route path="/all" element={<ItemListContainer />} />
             <Route path="/cart" element={<Cart/>} />
+            <Route path="/sendorder" element={<CartOrder/>} />
           </Routes>
           <Footer />
         </BrowserRouter>

@@ -1,14 +1,11 @@
 import { useState } from "react";
-import { useAppContext } from "./context/AppContext";
-import { useCartContext } from "./context/CartContext";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
 
-const ItemCount = ({ stock, initial, onAdd, id }) => {
-  const [count, setCount] = useState(initial);
 
-  const { addToCart } = useCartContext()
-  const { products } = useAppContext()
+const ItemCount = ({ stock, initial, onAdd }) => {
+  const [count, setCount] = useState(initial);
+ 
 
   const resHandler = () => {
     if (count > initial) {
@@ -20,15 +17,7 @@ const ItemCount = ({ stock, initial, onAdd, id }) => {
       setCount(count + 1);
     }
   };
-  const handleClick = (id, cantidad) => {
-    const findProduct = products.find((producto) => producto.id === id)
-
-    if(!findProduct){
-      alert("Error en la base de datos")
-      return
-    }
-
-    addToCart(findProduct, cantidad)
+  const handleClick = (count) => {
     onAdd(count)
   }
 
@@ -46,7 +35,7 @@ const ItemCount = ({ stock, initial, onAdd, id }) => {
 				<div>
 					<button
 						className="text-white btn bg-primary btn-block "
-						onClick={() => handleClick(id, count)}
+						onClick={() => handleClick( count)}
 					>
 						Agregar al Carrito
 					</button>

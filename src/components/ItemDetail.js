@@ -1,15 +1,24 @@
 import { useEffect, useState } from "react";
+import { useCartContext } from "./context/CartContext";
 import { Link } from "react-router-dom";
 import ItemCount from "./ItemCount";
 
 const ItemDetail = ({ producto }) => {
+
   const { title, brand, price, stock, picUrl, description, category, id } = producto;
   const [terminar, setTerminar] = useState(false);
+  const { addToCart } = useCartContext()
 
   const onAdd = (count) => {
     setTerminar(true);
-    console.log(count);
+    addToCart(producto, count);
   };
+  const { cart } = useCartContext()
+  
+
+  useEffect(() => {
+    localStorage.setItem("cart",JSON.stringify(cart))  
+  }, [cart])
 
   return (
     

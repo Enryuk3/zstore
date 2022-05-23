@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom";
 import { useCartContext } from "./context/CartContext";
+import CartOrder from "./CartOrder";
 
 const Cart = () => {
   const { cart } = useCartContext();
@@ -47,7 +48,9 @@ const Cart = () => {
           <button className="btn" onClick={deleteCart}>
             Vaciar Carrito
           </button>
-          <button className="btn bg-black">Ir a pagar</button>
+          <div>
+            <CartOrder />
+          </div>
         </div>
       </>
       )

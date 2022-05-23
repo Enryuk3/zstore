@@ -1,9 +1,12 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import CartWidget from "./CartWidget"
+import { useCartContext } from "./context/CartContext"
 
 function Navbar() {
   let [open, setOpen] = useState(false)
+  const { cart } = useCartContext()
+
   return (
     <div className=" lg:sticky flex flex-wrap items-center justify-between p-6 bg-indigo-600 relative z-50">
       <div  className="block md:hidden z-auto cursor-pointer">
@@ -22,7 +25,7 @@ function Navbar() {
         <li className="block text-center px-3 py-2 text-base font-medium text-gray-300 rounded-md btn-ghost hover:text-white"><Link to='/all'>ALL</Link></li> 
       </div>
       <div className="inline-block px-4 py-2 text-sm leading-none text-white rounded hover:border-transparent lg:mt-0">
-        <CartWidget />
+        {cart.length>0 ? <CartWidget /> : <h2 className="hidden">toro</h2>}
       </div>
       <div >
       </div>
