@@ -6,12 +6,12 @@ import App from './App';
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCT6JEHk7eOE-YgKF9stn5Qhirxj9BCDws",
-  authDomain: "cellular-axon-317623.firebaseapp.com",
-  projectId: "cellular-axon-317623",
-  storageBucket: "cellular-axon-317623.appspot.com",
-  messagingSenderId: "1019825400052",
-  appId: "1:1019825400052:web:ebbc2e325a207e617856a1"
+  apiKey: process.env.REACT_APP_APIKEY,
+  authDomain: process.env.REACT_APP_AUTHDOMAIN,
+  projectId: process.env.REACT_APP_PROJECTID,
+  storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
+  appId: process.env.REACT_APP_APPID
 };
 
 initializeApp(firebaseConfig);
