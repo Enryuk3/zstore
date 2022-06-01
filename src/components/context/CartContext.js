@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react"
+import { useLocalStorage } from "../useLocalStorage"
 
 const CartContext = createContext()
 
@@ -6,9 +7,8 @@ export const useCartContext = () => useContext(CartContext)
 
 const CartContextProvider = ({ children }) => {
   //logica
-  const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart')||'[]')
 
-  const [cart, setCart] =  useState(cartFromLocalStorage)
+  const [cart, setCart] =  useLocalStorage('carrito', [])
 
   //validar si está el item en el carrito
   const isInCart = (id) => cart.find((producto) =>producto.id === id)

@@ -4,16 +4,11 @@ import { useParams } from "react-router-dom"
 import ItemList from "./ItemList"
 
 function ItemListContainer() {
-  const [category, setCategory] = useState()
+  const [category, setCategory] = useState([])
   const { categoryId } = useParams()
 
   useEffect(() => {
     const db = getFirestore()
-    
-    // const q = query(
-    //   collection(db,"items"),
-    //   where("category", "==", categoryId)
-    // )
     const itemsCollection  = collection(db,"items")
 
     getDocs(itemsCollection).then( snapshot => {

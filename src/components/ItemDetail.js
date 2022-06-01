@@ -13,13 +13,7 @@ const ItemDetail = ({ producto }) => {
     setTerminar(true);
     addToCart(producto, count);
   };
-  const { cart } = useCartContext()
   
-
-  useEffect(() => {
-    localStorage.setItem("cart",JSON.stringify(cart))  
-  }, [cart])
-
   return (
     
 			<div className="hero bg-base-200">
