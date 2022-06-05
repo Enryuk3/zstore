@@ -31,14 +31,22 @@ const ItemDetail = ({ producto }) => {
             <span className="text-3xl lg:text-5xl font-bold leading-none align-baseline">
               ${price}
             </span>
-            <div className="mt-4">
+            <div className="mt-4 flex gap-2">
             {terminar ? (
-              <Link
-                to="/cart"
-                className="text-white btn bg-primary btn-block "
-              >
-                Terminar Compra
-              </Link>
+              <>
+                <Link
+                  to="/cart"
+                  className="text-white btn bg-primary "
+                >
+                  Terminar Compra
+                </Link>
+                <Link 
+                  to="/"
+                  className="btn bg-z-dark-blue hover:bg-z-pink"
+                >
+                  Seguir Comprando
+                </Link>
+              </>
             ) : (
               <ItemCount stock={stock} initial={1} onAdd={onAdd} id={id} />
             )}
