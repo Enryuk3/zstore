@@ -9,7 +9,7 @@ import Cart from "./components/Cart";
 
 import CartContextProvider from "./components/context/CartContext";
 import AppContextProvider from "./components/context/AppContext";
-import CartOrder from "./components/CartOrder";
+import Checkout from "./components/Checkout";
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
             <Route path="/shoes/:shoesId" element={<ItemDetailContainer />} />
             <Route path="/all" element={<ItemListContainer />} />
             <Route path="/cart" element={<Cart/>} />
-            <Route path="/sendorder" element={<CartOrder/>} />
+            <Route path="/checkout" element={<Checkout/>} />
           </Routes>
           <Footer />
         </BrowserRouter>
