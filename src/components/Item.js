@@ -2,9 +2,6 @@ import { Link } from "react-router-dom"
 
 function Item({producto}) {
 
-  const onAdd = (count) => {
-    alert (`Se agregaron ${count} productos al carrito`)
-  };
   return (
     <div className="shadow-xl card card-compact w-96 bg-base-100">
       <figure>

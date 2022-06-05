@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useCartContext } from "./context/CartContext";
 import { Link } from "react-router-dom";
 import ItemCount from "./ItemCount";
