@@ -15,7 +15,7 @@ function Item({producto}) {
           </span>
         </div>
         <div className="justify-end card-actions">
-          <Link to={`/shoes/${producto.id}`} className="btn btn-primary">
+          <Link to={`/shoes/${producto.id}`} className="btn btn-primary bg-z-blue hover:bg-z-pink">
             ver más
           </Link>
         </div>

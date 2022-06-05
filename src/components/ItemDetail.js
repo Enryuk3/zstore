@@ -16,7 +16,7 @@ const ItemDetail = ({ producto }) => {
   
   return (
     
-			<div className="hero bg-base-200">
+			<div className="hero w-11/12 mx-auto">
       <div className="flex-col lg:hero-content md:flex-row ">
         <img
           src={picUrl}
