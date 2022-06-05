@@ -178,7 +178,7 @@ const Checkout = () => {
 					<div className="bg-white px-3 md:px-4 py-12 flex flex-col justify-center items-center">
 						<h2 className="text-center md:w-9/12 lg:w-7/12 font-medium text-lg text-gray-800 tracking-wider leading-tight uppercase">¡Muchas gracias por tu compra {(buyer.name).toUpperCase()}!</h2>
 						<h2 className="text-center md:w-9/12 lg:w-7/12  ">¡Muchas gracias por tu compra {(buyer.name).toUpperCase()}!</h2>
-						<p className="mt-6 text-center md:w-9/12 lg:w-7/12 font-light text-sm text-gray-600 tracking-wide leading-normal" >Te enviamos un mail a {(buyer.email).toLowerCase()} con tu orden de compra ID: {idCompra}. Esperamos que hayas tenido una agradable experiencia en YOHJI YAMAMOTO. ¡Hasta la próxima!</p>
+						<p className="mt-6 text-center md:w-9/12 lg:w-7/12 font-light text-sm text-gray-600 tracking-wide leading-normal" >Te enviamos un mail a {(buyer.email).toLowerCase()} con tu orden de compra ID: {idCompra}. Esperamos que hayas tenido una agradable experiencia en ZSTORE ¡Hasta la próxima!</p>
 						<Link to="/" className="mt-6 flex justify-center">
 							<button onClick={deleteCart} className="font-medium text-xxs tracking-wider leading-normal uppercase select-none focus:outline-none text-white bg-gray-700 focus:ring-transparent w-40 text-center py-3 cursor-pointer">
 								Volver al inicio

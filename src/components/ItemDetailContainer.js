@@ -1,31 +1,39 @@
-import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
-import { useAppContext } from "./context/AppContext"
-import { doc, getDoc, getFirestore } from "firebase/firestore"
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useAppContext } from "./context/AppContext";
+import { doc, getDoc, getFirestore } from "firebase/firestore";
 
-import ItemDetail from "./ItemDetail"
+import ItemDetail from "./ItemDetail";
+import Spinner from "./Spinner";
 
 const ItemDetailContainer = () => {
-  const { products } = useAppContext()
-  const [product, setProduct] = useState([])
-  const { shoesId } = useParams()
-
+  const { products } = useAppContext();
+  const [product, setProduct] = useState([]);
+  const { shoesId } = useParams();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const db = getFirestore()
+    setLoading(true);
+    const db = getFirestore();
 
-    const shoe = doc(db, 'items', shoesId)
-    getDoc(shoe).then(res => {
+    const shoe = doc(db, "items", shoesId);
+    getDoc(shoe).then((res) => {
       if (res.exists()) {
-        setProduct({ id: res.id, ...res.data() })
+        setProduct({ id: res.id, ...res.data() });
       }
-    })
-
-  }, [shoesId, products])
+    });
+    setLoading(false);
+  }, [shoesId, products]);
   return (
-    <div className="container h-auto max-w-4xl mx-auto my-8 bg-gray-50">
-      <ItemDetail producto={product} />
-    </div>
-  )
-}
-export default ItemDetailContainer
+    <>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <div className="container h-auto max-w-4xl mx-auto my-8 bg-gray-50">
+          <ItemDetail producto={product} />
+        </div>
+      )}
+    </>
+  );
+};
+export default ItemDetailContainer;
