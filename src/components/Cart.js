@@ -6,55 +6,123 @@ import { useCartContext } from "./context/CartContext";
 const Cart = () => {
   const { cart } = useCartContext();
   const { deleteFromCart } = useCartContext()
-  const { deleteCart} = useCartContext()
+  const { deleteCart, cartTotal } = useCartContext()
 
   return (
-    <div >
-    <h1 className="text-center py-7 text-xl lg:text-3xl font-bold text-black">TU CARRITO</h1>
-    
-      
-      {cart.map((item) => (
-        <div key={item.id} className="flex flex-row p-4 items-center w-[300px] lg:w-96 justify-center gap-4 md:max-w-5xlxl mx-auto ">
-          <img src={item.picUrl}  className="w-10 md:w-32 lg:w-96 " alt={item.title} />
-          <div className="flex flex-col gap-2">
-            <p className="badge badge-primary badge-lg">{item.brand}</p>
-            <h2 className="text-base md:text-3xl lg:text-5xl font-bold leading-none align-baselinel ">{item.title}</h2>
-            <p className="text-base lg:text-2xl"><span className="font-semibold ">Cantidad: </span>{item.quantity}</p>
-          </div>
-          <p>{item.price}</p>
-          <button className="btn btn-error text-white " onClick={()=>deleteFromCart(item)}>
-            <FontAwesomeIcon icon={faTrash}/>
-          </button>
-        </div>
-      ))}  
-      
-      {
-      cart.length === 0? (
-        <div className="h-[calc(100vh-300px)] grid place-content-center">
-          <p className="text-xl lg:text-3xl font-bold py-5 uppercase">Tu carrito está vacío</p>
-          <p className="text-base lg:text-lg font-medium mb-4">Una vez que añadas algo a tu carrito, aparecerá aquí. ¿Listo para empezar?</p>
-          <div>
-           <Link to="/" className="btn bg-indigo-800"> Comenzar</Link>  
-          </div>
-        </div>
-      ) : (
-      <>
-        <div className="flex flex-col items-center justify-center">
-          <p className="text-base font-medium lg:text-2xl mb-5">
-            TOTAL({ cart.reduce((acc, item) => acc + item.quantity, 0)} productos)
-            <span className="text-bold"> ${ cart.reduce((acc, item) => acc + (item.price*item.quantity), 0)} </span>
+    <>
+    {/* Carrito = vacío */}
+    {cart.length === 0 ? (
+      <div className=" min-h-[300px] grid place-content-center my-6 bg-white w-11/12 md:w-3/4 lg:w-3/4 mx-auto pb-7">
+        <div className="mx-5 text-center">
+          <img
+            className="my-6 rounded" alt=""
+            src="https://p4.wallpaperbetter.com/wallpaper/482/792/849/abstract-sport-background-nike-wallpaper-preview.jpg"
+          ></img>
+          <p className="font-bold">
+            ¡Tu carrito está vacío! <br />
+            Una vez que añadas algo a tu carrito, aparecerá aquí. ¿Listo para empezar?
           </p>
-          <button className="btn" onClick={deleteCart}>
+          <Link
+            to="/"
+            className="btn mt-5 px-3 py-2 text-white bg-z-dark-blue hover:text-z-dark-blue hover:bg-white text-xs font-bold rounded transition-all duration-500"
+          >
+            Ver productos
+          </Link>
+        </div>
+      </div>
+    ) : (
+      /* Carrito content */
+      <div className="bg-white my-6 w-full mx-auto">
+        <h2 className="self-center py-8 text-center text-z-dark-blue underline text-xl md:text-2xl lg:text-2xl font-bold">
+          Carrito de compras
+        </h2>
+        <table className="mx-auto w-full">
+          <thead>
+            <tr className="border-b border-gray-200">
+              <th className="items-center text-z-dark-blue text-xs md:text-lg lg:text-lg">
+                Producto
+              </th>
+              <th className="items-center text-z-dark-blue text-xs md:text-lg lg:text-lg">
+                Precio
+              </th>
+              <th className="items-center text-z-dark-blue text-xs md:text-lg lg:text-lg">
+                Cantidad
+              </th>
+              <th className="items-center text-z-dark-blue text-xs md:text-lg lg:text-lg">
+                Subtotal
+              </th>
+              <th className="items-center text-z-dark-blue text-xs md:text-lg lg:text-lg">
+                Eliminar
+              </th>
+            </tr>
+          </thead>
+          {cart.map((item) => (
+            <thead key={item.id}>
+              <tr className="border-b border-gray-200">
+                <th className="flex flex-col items-center ">
+                  <img
+                    className="h-36 w-36"
+                    src={item.picUrl}
+                    alt="Imagen de producto"
+                  />
+                  <div className="flex flex-col ">
+                    <p className="text-z-dark-blue text-xs md:text-lg lg:text-lg  ">
+                      {item.title}
+                    </p>
+                  </div>
+                </th>
+                <th className="text-z-dark-blue text-sm md:text-lg lg:text-lg">
+                  ${item.price}
+                </th>
+                <th className="text-z-dark-blue text-sm md:text-lg lg:text-lg">
+                  {item.quantity}
+                </th>
+                <th className="text-z-dark-blue text-sm md:text-lg lg:text-lg">
+                  ${item.quantity * item.price}
+                </th>
+                <th>
+                  <button
+                    className="text-z-dark-blue text-sm md:text-lg lg:text-lg"
+                    onClick={() => deleteFromCart(item)}
+                  >
+                    <FontAwesomeIcon icon={faTrash} />
+                  </button>
+                </th>
+              </tr>
+            </thead>
+          ))}
+        </table>
+        <div className="flex flex-col justify-between w-4/5 mx-auto mt-2 mb-2 md:flex-row">
+          <button
+            className="btn capitalize my-3 text-white bg-z-dark-blue hover:text-whit hover:bg-z-pink text-base md:text-xl lg:text-xl font-bold rounded transition-all duration-500 w-full md:w-1/3"
+            onClick={() => deleteCart()}
+          >
             Vaciar Carrito
           </button>
-          <div>
-            <Link to="/checkout" className="btn">Checkout</Link>
+
+          <div className="flex flex-col self-start w-full md:w-2/5">
+            <div className="flex flex-row justify-between my-2 text-sm md:text-lg lg:text-lg font-bold ">
+              <p>Cantidad de productos:</p>
+              <p>{cart.reduce((acc, ite) => acc + ite.quantity, 0)}</p>
+            </div>
+            <div className="flex flex-row justify-between my-2 text-base md:text-xl lg:text-xl font-bold ">
+              <p className="underline">Total:</p>
+              <p>${cartTotal()}</p>
+            </div>
+            <div className="flex flex-row justify-between my-2 text-sm md:text-lg lg:text-lg font-bold">
+              <p>¡Envío gratis!</p>
+            </div>
+            <Link
+              to="/checkout"
+              className="btn capitalize mt-3 mb-6 text-white bg-z-dark-blue hover:text-z-dark-blue hover:bg-white text-base md:text-xl lg:text-xl font-bold rounded transition-all duration-500"
+            >
+              Checkout
+            </Link>
           </div>
         </div>
-      </>
-      )
-    } 
-    </div>
+      </div>
+    )}
+  </>
   );
 };
 export default Cart;
